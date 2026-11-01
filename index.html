@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Calculate fermentation salt by weight using a recipe's dry-salt, water-brine, or total-ingredient method. See the formula and units clearly.">
+  <meta name="theme-color" content="#f5f4ec">
+  <link rel="icon" type="image/png" href="logo.png">
+  <title>Ferment Math — Fermentation Salt Calculator</title>
+  <link rel="stylesheet" href="index.css">
+  <script src="index.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav-wrap" aria-label="Main navigation">
+      <a class="brand" href="index.html" aria-label="Ferment Math home">
+        <img class="brand-mark" src="logo.png" alt="">
+        <span>ferment<span class="brand-light">math</span></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-links">Menu</button>
+      <div class="nav-links" id="primary-links">
+        <a class="nav-link active" aria-current="page" href="index.html">Calculator</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="contact.html">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero page-shell">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-dot"></span> A clear tool for home fermenters</p>
+        <h1>Get the salt math <em>right.</em></h1>
+        <p class="hero-intro">Choose the calculation method your trusted recipe uses, enter your weights, and see exactly how the salt amount is worked out.</p>
+        <a class="text-link" href="#how-it-works">Understand the methods <span aria-hidden="true">↓</span></a>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="jar jar-back"><span></span><i></i></div>
+        <div class="jar jar-front"><span></span><i></i><b></b></div>
+        <div class="leaf leaf-one"></div>
+        <div class="leaf leaf-two"></div>
+        <div class="hero-stamp"><span>WEIGH</span><span>·</span><span>MIX</span><span>·</span><span>FERMENT</span></div>
+      </div>
+    </section>
+
+    <section class="calculator-section page-shell" aria-labelledby="calculator-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">The calculator</p>
+          <h2 id="calculator-title">Start with your recipe</h2>
+        </div>
+        <p class="section-note">This tool does the arithmetic. It does not choose a safe or suitable salt percentage for your ferment.</p>
+      </div>
+
+      <div class="calculator-card">
+        <form id="salt-calculator" novalidate>
+          <fieldset class="method-fieldset">
+            <legend>1. Choose the method your recipe specifies</legend>
+            <div class="method-options">
+              <label class="method-option">
+                <input type="radio" name="method" value="dry" checked>
+                <span class="method-card">
+                  <span class="method-number">01</span>
+                  <strong>Dry-salted</strong>
+                  <small>Salt as a percentage of the vegetables or other dry ingredients.</small>
+                </span>
+              </label>
+              <label class="method-option">
+                <input type="radio" name="method" value="water">
+                <span class="method-card">
+                  <span class="method-number">02</span>
+                  <strong>Water-only brine</strong>
+                  <small>Salt as a percentage of the water weight only.</small>
+                </span>
+              </label>
+              <label class="method-option">
+                <input type="radio" name="method" value="total">
+                <span class="method-card">
+                  <span class="method-number">03</span>
+                  <strong>Total ingredients</strong>
+                  <small>Salt as a percentage of vegetables plus water weight.</small>
+                </span>
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="calculator-inputs">
+            <div class="input-column">
+              <div id="vegetable-field" class="field">
+                <label for="vegetable-weight" id="vegetable-label">Vegetable / ingredient weight</label>
+                <div class="input-with-unit">
+                  <input id="vegetable-weight" name="vegetableWeight" type="number" min="0" step="any" inputmode="decimal" placeholder="e.g. 850" autocomplete="off">
+                  <select id="vegetable-unit" aria-label="Ingredient weight unit">
+                    <option value="g">g</option>
+                    <option value="kg">kg</option>
+                    <option value="oz">oz</option>
+                    <option value="lb">lb</option>
+                  </select>
+                </div>
+              </div>
+              <div id="water-field" class="field is-hidden">
+                <label for="water-weight">Water weight</label>
+                <div class="input-with-unit">
+                  <input id="water-weight" name="waterWeight" type="number" min="0" step="any" inputmode="decimal" placeholder="e.g. 1000" autocomplete="off">
+                  <select id="water-unit" aria-label="Water weight unit">
+                    <option value="g">g</option>
+                    <option value="kg">kg</option>
+                    <option value="oz">oz</option>
+                    <option value="lb">lb</option>
+                  </select>
+                </div>
+                <span class="field-help">Weigh the water, or use 1 g per 1 mL of plain water as a practical kitchen conversion.</span>
+              </div>
+              <div class="field">
+                <label for="salt-percent">Salt percentage from your recipe</label>
+                <div class="input-with-unit percent-input">
+                  <input id="salt-percent" name="saltPercent" type="number" min="0.01" max="100" step="any" inputmode="decimal" placeholder="e.g. 2.5" required>
+                  <span class="unit-suffix">%</span>
+                </div>
+                <span class="field-help">Enter the percentage as written in a reliable, tested recipe. No percentage is preselected.</span>
+              </div>
+              <p id="form-error" class="form-error" role="alert" aria-live="polite"></p>
+              <button class="button button-primary calculate-button" type="submit">Calculate salt <span aria-hidden="true">→</span></button>
+            </div>
+
+            <aside class="result-panel" aria-live="polite" aria-atomic="true">
+              <div class="result-topline"><span class="result-icon" aria-hidden="true">✳</span><span>Your calculation</span></div>
+              <p class="result-placeholder" id="result-placeholder">Your salt amount will appear here.</p>
+              <div id="result-output" class="result-output" hidden>
+                <p class="result-label">Salt to weigh</p>
+                <p class="result-amount"><span id="result-grams">—</span><span class="result-unit">g</span></p>
+                <p class="result-secondary" id="result-secondary"></p>
+                <div class="formula-box">
+                  <span class="formula-title">The calculation</span>
+                  <p id="result-formula"></p>
+                </div>
+                <button class="button button-outline" id="copy-result" type="button">Copy result</button>
+                <span class="copy-status" id="copy-status" aria-live="polite"></span>
+              </div>
+              <p class="result-footnote">Use a kitchen scale for repeatable results. Spoon measures vary by salt type and crystal size.</p>
+            </aside>
+          </div>
+        </form>
+      </div>
+      <p class="safety-strip"><span aria-hidden="true">!</span><span><strong>Food safety comes first.</strong> Salt is important to the safety and texture of fermented vegetables. Do not reduce the salt in a fermented-food recipe based on this calculator. Follow a current, tested recipe from a trusted food-preservation authority.</span></p>
+    </section>
+
+    <section class="method-section page-shell" id="how-it-works">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">No hidden assumptions</p>
+          <h2>Three methods, one clear formula</h2>
+        </div>
+        <p class="section-note">Fermentation recipes do not all use the same basis for a salt percentage. Pick the method stated by your source—these methods are not interchangeable.</p>
+      </div>
+      <div class="method-explain-grid">
+        <article class="explain-card">
+          <span class="explain-index">01</span>
+          <h3>Dry-salted</h3>
+          <p>Often used for shredded vegetables that release their own liquid. The percentage is applied to the weight of the vegetables or other ingredients specified by the recipe.</p>
+          <div class="equation">salt weight = ingredient weight × percentage ÷ 100</div>
+        </article>
+        <article class="explain-card">
+          <span class="explain-index">02</span>
+          <h3>Water-only brine</h3>
+          <p>Some recipes define their brine percentage using only the water. Enter the water weight—not jar capacity or an estimate of the finished ferment.</p>
+          <div class="equation">salt weight = water weight × percentage ÷ 100</div>
+        </article>
+        <article class="explain-card">
+          <span class="explain-index">03</span>
+          <h3>Total ingredients</h3>
+          <p>Some recipes base salt on the combined weight of the vegetables and water. We add those weights first, then apply the recipe’s percentage.</p>
+          <div class="equation">salt weight = (ingredients + water) × percentage ÷ 100</div>
+        </article>
+      </div>
+      <div class="source-note">
+        <span class="source-icon" aria-hidden="true">i</span>
+        <p><strong>Why we don’t recommend a percentage:</strong> appropriate salt amounts depend on the specific food and tested recipe. The National Center for Home Food Preservation notes that salt is important to the safety and texture of fermented sauerkraut and brined pickles, and cautions against reducing it. This calculator only performs the arithmetic for a percentage you already have from a reliable recipe.</p>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <div class="page-shell guide-layout">
+        <div>
+          <p class="eyebrow">A better batch starts before the jar</p>
+          <h2>Small details make the math useful.</h2>
+          <p class="guide-intro">A precise number only helps when the inputs and method match the recipe. Use these checks before you weigh.</p>
+        </div>
+        <div class="guide-list">
+          <article class="guide-item">
+            <span class="guide-num">1</span>
+            <div><h3>Check the recipe’s basis</h3><p>Confirm whether its percentage refers to vegetables, water, or the combined ingredients. If it is not clear, consult the recipe author or a trusted extension service rather than guessing.</p></div>
+          </article>
+          <article class="guide-item">
+            <span class="guide-num">2</span>
+            <div><h3>Weigh in compatible units</h3><p>Use a scale and enter ingredient and water weights separately. The calculator converts each to grams before applying the formula.</p></div>
+          </article>
+          <article class="guide-item">
+            <span class="guide-num">3</span>
+            <div><h3>Use the salt called for</h3><p>Use the salt type and amount specified by your tested recipe. Salt crystal sizes and spoon volumes differ, so weigh it when the recipe provides a weight.</p></div>
+          </article>
+          <article class="guide-item">
+            <span class="guide-num">4</span>
+            <div><h3>Follow the whole process</h3><p>Salt math does not replace clean handling, the right container, fermentation temperature, submersion, storage instructions, or any recipe-specific safety steps.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-section page-shell">
+      <div class="section-heading">
+        <div><p class="eyebrow">Good to know</p><h2>Frequently asked questions</h2></div>
+      </div>
+      <div class="faq-grid">
+        <details class="faq-item">
+          <summary>Which method should I choose?</summary>
+          <p>Use the basis specified in your recipe. The calculator cannot determine the intended method from the food name alone, and switching methods changes the result.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Does this tell me whether a ferment is safe?</summary>
+          <p>No. It calculates salt weight only. Food safety also depends on the recipe, ingredients, preparation, fermentation conditions, and storage. Use a current, tested recipe and follow all of its instructions.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I use a lower salt percentage?</summary>
+          <p>Do not use this calculator to reduce salt in a fermented-food recipe. The National Center for Home Food Preservation warns that salt is important to the safety and texture of fermented sauerkraut and brined pickles.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Does the calculator save my recipe?</summary>
+          <p>No. Calculations run in your browser. This page does not send entered weights to a server or save them for later.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="references-section page-shell">
+      <div class="references-card">
+        <div><p class="eyebrow">Our reference</p><h2>Food-preservation guidance we trust</h2><p>We keep the safety advice conservative and link to authoritative sources so you can check the full context.</p></div>
+        <ul class="reference-links">
+          <li><a href="https://nchfp.uga.edu/how/ferment/general-information-on-fermenting/" target="_blank" rel="noopener noreferrer">NCHFP: General information on fermenting <span aria-hidden="true">↗</span></a></li>
+          <li><a href="https://nchfp.uga.edu/how/ferment/recipes/sauerkraut/" target="_blank" rel="noopener noreferrer">NCHFP: Sauerkraut recipe and process <span aria-hidden="true">↗</span></a></li>
+        </ul>
+      </div>
+      <p class="disclaimer">Ferment Math is an educational calculation tool, not a food-safety authority. Always follow tested recipes and official food-preservation guidance. We do not guarantee the safety or outcome of any ferment.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="page-shell footer-wrap">
+      <a class="brand footer-brand" href="index.html"><img class="brand-mark" src="logo.png" alt=""><span>ferment<span class="brand-light">math</span></span></a>
+      <p>Clear numbers. Better-informed batches.</p>
+      <div class="footer-links"><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy policy</a></div>
+      <span class="copyright">© <span id="year">2026</span> Ferment Math</span>
+    </div>
+  </footer>
+</body>
+</html>

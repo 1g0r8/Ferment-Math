@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Learn why Ferment Math exists, how its salt calculations work, and where its food-preservation guidance comes from.">
+  <meta name="theme-color" content="#f5f4ec">
+  <link rel="icon" type="image/png" href="logo.png">
+  <title>About — Ferment Math</title>
+  <link rel="stylesheet" href="index.css">
+  <script src="index.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav-wrap" aria-label="Main navigation">
+      <a class="brand" href="index.html" aria-label="Ferment Math home"><img class="brand-mark" src="logo.png" alt=""><span>ferment<span class="brand-light">math</span></span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-links">Menu</button>
+      <div class="nav-links" id="primary-links">
+        <a class="nav-link" href="index.html">Calculator</a>
+        <a class="nav-link active" aria-current="page" href="about.html">About</a>
+        <a class="nav-link" href="contact.html">Contact</a>
+      </div>
+    </nav>
+  </header>
+  <main class="subpage-main" id="main">
+    <section class="subpage-hero">
+      <div class="page-shell">
+        <p class="eyebrow">A little about this tool</p>
+        <h1>Better math.<br>More confident making.</h1>
+        <p class="hero-intro">Ferment Math helps home fermenters calculate salt by weight without hiding the method or the assumptions behind the answer.</p>
+      </div>
+    </section>
+    <article class="prose page-shell">
+      <h2>Why we made Ferment Math</h2>
+      <p>Fermentation recipes may calculate salt against the weight of vegetables, water, or the combined ingredients. Those are different calculations. Our tool makes the user choose the basis used by their recipe, converts the entered weights to grams, and shows the arithmetic so it can be checked.</p>
+      <p>The calculator is intentionally not a recipe recommender. It does not choose a salt percentage, decide what is safe to ferment, or replace a tested recipe. The ingredients, process, and conditions matter beyond the calculation.</p>
+
+      <h2>How we approach food-safety information</h2>
+      <p>We rely on established food-preservation guidance and keep our advice conservative. The National Center for Home Food Preservation (NCHFP), a University of Georgia Extension resource, explains that salt in fermented sauerkraut and brined pickles is important to safety and texture and cautions against reducing it. For that reason, the calculator asks you to provide the percentage from a reliable recipe and does not suggest one.</p>
+      <p>For detailed instructions, follow the full current recipe and process from a trusted source, such as the <a href="https://nchfp.uga.edu/how/ferment/recipes/sauerkraut/" target="_blank" rel="noopener noreferrer">NCHFP sauerkraut recipe</a> or its <a href="https://nchfp.uga.edu/how/ferment/general-information-on-fermenting/" target="_blank" rel="noopener noreferrer">general information on fermenting</a>. Never rely on this calculator alone to establish food safety.</p>
+
+      <h2>What the calculator does with your inputs</h2>
+      <ul>
+        <li><strong>Dry-salted:</strong> ingredient weight in grams × recipe percentage ÷ 100.</li>
+        <li><strong>Water-only brine:</strong> water weight in grams × recipe percentage ÷ 100.</li>
+        <li><strong>Total ingredients:</strong> (ingredient weight in grams + water weight in grams) × recipe percentage ÷ 100.</li>
+      </ul>
+      <p>Calculations run in your browser. The current version does not submit or store the weights you enter. Results are estimates limited by the accuracy of your scale and inputs; they are displayed to one decimal place in grams.</p>
+
+      <h2>Our commitment to useful content</h2>
+      <p>We aim to provide a practical tool alongside original explanations of its methods, transparent limitations, and links to primary food-preservation sources. We do not generate recipe pages by swapping keywords or inventing values. If you spot unclear wording or an arithmetic issue, please let us know through the <a href="contact.html">Contact page</a>.</p>
+      <p class="last-updated">Content reviewed: November 1, 2026.</p>
+    </article>
+  </main>
+  <footer class="site-footer">
+    <div class="page-shell footer-wrap">
+      <a class="brand footer-brand" href="index.html"><img class="brand-mark" src="logo.png" alt=""><span>ferment<span class="brand-light">math</span></span></a>
+      <p>Clear numbers. Better-informed batches.</p>
+      <div class="footer-links"><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy policy</a></div>
+      <span class="copyright">© <span id="year">2026</span> Ferment Math</span>
+    </div>
+  </footer>
+</body>
+</html>
